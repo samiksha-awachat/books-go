@@ -63,8 +63,9 @@ func SearchBooksByTitle(title string) ([]model.Book, error) {
 
 	var filteredBooks []model.Book
 
+	title = strings.ToLower(title)
 	for _, book := range books {
-		if strings.Contains(book.Title, title) {
+		if strings.Contains(strings.ToLower(book.Title), title) {
 			filteredBooks = append(filteredBooks, book)
 		}
 	}

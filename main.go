@@ -25,7 +25,10 @@ func main() {
 		books, _ := service.SortBooksByAuthor()
 		PrintBooks(books)
 	case enums.SearchByTitle:
-		books, _ := service.SearchBooksByTitle("JavaScript")
+		fmt.Println("Enter the title: ")
+		title := ""
+		fmt.Scanln(&title)
+		books, _ := service.SearchBooksByTitle(title)
 		PrintBooks(books)
 	default:
 		fmt.Println("Enter a valid choice")
