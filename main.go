@@ -56,9 +56,9 @@ Input: `
 // PrintBooks ...
 func PrintBooks(books []model.Book) {
 	w := tabwriter.NewWriter(os.Stdout, 1, 1, 1, ' ', 0)
-	fmt.Fprintln(w, "TITLE\tAUTHOR")
+	fmt.Fprintln(w, "TITLE\tAUTHOR\tDESCRIPTION")
 	for _, book := range books {
-		fmt.Fprintf(w, "%s\t%s\t", book.Title, book.Author)
+		fmt.Fprintf(w, "%s\t%s\t%s...\t", book.Title, book.Author, book.Description[0:50])
 		fmt.Fprintln(w)
 	}
 	w.Flush()
