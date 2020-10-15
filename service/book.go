@@ -15,9 +15,13 @@ const (
 	booksURL = "https://gist.githubusercontent.com/samiksha-awachat/69c085f70040f80c0ed3229f08367ffe/raw/3d287fa1d778a21e2787930b807771270a83c1b2/books.json"
 )
 
+var fetchBooks = func() (*http.Response, error) {
+	return http.Get(booksURL)
+}
+
 // GetBooks ...
 func GetBooks() ([]model.Book, error) {
-	response, err := http.Get(booksURL)
+	response, err := fetchBooks()
 	if err != nil {
 		fmt.Printf("error while fetching books: %v", err)
 		return nil, err
